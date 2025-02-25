@@ -1,0 +1,273 @@
+/* ==========================
+   Global Font Styling
+   ========================== */
+@font-face {
+    font-family: 'Will Font';
+    src: url('https://static1.squarespace.com/static/64aed2893fd84666887b79cd/t/67a567e969da5b6d455da3d5/1738893289539/Will+Font.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, a, q, blockquote {
+    font-family: 'Will Font', sans-serif !important;
+}
+
+/* General text styling */
+h1, h2, h3, p, body:not(a):not(button) {
+    font-size: 25px;
+    letter-spacing: -0.50em;
+    word-spacing: 0.8em;
+    line-height: 1.6;
+}
+
+/* ==========================
+   Header & Navigation (Base)
+   ========================== */
+#header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#header nav {
+    position: relative;
+    left: -20px;
+    margin-top: -10px;
+    display: flex;
+    flex-direction: column;
+    gap: -20px;
+}
+
+/* Active nav links base styling (desktop defaults) */
+#header nav a[aria-current="page"] {
+    all: unset;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: -0.47em;
+    word-spacing: 0.7em;
+    transition: transform 0.3s ease-in-out;
+    text-decoration: none !important; /* Remove underline */
+    color: inherit !important;
+    font-size: 125% !important; /* Active link is 125% of non-active */
+}
+
+#header nav a[aria-current="page"]::before {
+    content: "> ";
+    font-weight: bold;
+    margin-right: 3px;
+}
+
+/* Non-active nav links (desktop defaults) */
+#header nav a:not(.btn):not(.sqs-button-element--primary) {
+    text-decoration: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    transition: transform 0.2s ease, letter-spacing 0.2s ease, word-spacing 0.2s ease;
+    transform-origin: left;
+    letter-spacing: -0.5em;
+    word-spacing: 0.7em;
+}
+
+#header nav a:hover {
+    transform: scale(1.2);
+}
+
+/* ==========================
+   Mobile/Tablet Styles (0 to 1024px)
+   ========================== */
+@media (max-width:1024px) {
+    /* Adjust nav container position and centering */
+    #header nav {
+        position: relative;
+        top: -30px; /* Adjust as needed */
+        text-align: center;
+    }
+    
+    /* Non-active links use same scaling & spacing as before */
+    #header nav a {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        letter-spacing: -0.5em;
+        word-spacing: 0.7em;
+        padding: 0;
+        margin-bottom: -10px; /* Maintains original vertical spacing */
+        line-height: 1.2;
+        /* Original mobile clamp scaling */
+        font-size: clamp(2.4rem, 6.8vw, 3.6rem) !important;
+        color: #000 !important;
+        transform-origin: center !important;
+        margin: 0 auto; /* Center horizontally */
+    }
+    
+    /* Active links: 125% larger than non-active, no underline */
+    #header nav a[aria-current="page"] {
+        color: #000 !important;
+        font-size: clamp(3rem, 7.5vw, 4rem) !important; /* Active link 25% larger */
+        font-weight: bold;
+        transform: none !important;
+        text-decoration: none !important; /* Ensure underline removal */
+    }
+    
+    /* ">" marker for active links */
+    #header nav a[aria-current="page"]::before {
+        content: ">";
+        font-size: 2.5rem;
+        position: absolute;
+        left: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #000 !important;
+    }
+    
+    /* Button styles remain as before */
+    a.btn,
+    a.sqs-button-element--primary,
+    a.btn--border,
+    a.theme-btn--primary-inverse {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        padding: 0.5em 1em !important;
+        letter-spacing: -0.45em !important;
+        word-spacing: 0.8em !important;
+        line-height: 1 !important;
+        text-indent: -17px !important;
+    }
+    
+    /* Hover scaling */
+    #header nav a:hover {
+        transform: scale(1.1);
+    }
+    #header nav a[aria-current="page"]:hover {
+        transform: scale(1.1) !important;
+    }
+    #header nav a[aria-current="page"] {
+        transition: transform 0.2s ease !important;
+    }
+}
+
+/* ==========================
+   Burger Menu Styling
+   ========================== */
+.burger {
+    width: 50px;
+    height: 50px;
+    background: url('https://static1.squarespace.com/static/64aed2893fd84666887b79cd/t/67aa879bfd51026457abc667/1739229083173/Plus.png') no-repeat center;
+    background-size: contain;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.header--menu-open .burger {
+    transform: rotate(45deg) !important;
+}
+
+.top-bun, .patty, .bottom-bun {
+    background: none !important;
+}
+
+/* ==========================
+   Smooth Scaling Effects
+   ========================== */
+a, button, .sqs-block-button-element, img {
+    display: inline-block;
+    transition: transform 0.3s ease-in-out !important;
+}
+
+a:hover, button:hover, .sqs-block-button-element:hover, img:hover {
+    transform: scale(1.12) !important;
+}
+
+/* ==========================
+   Scrollbar Styling
+   ========================== */
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    ::-webkit-scrollbar {
+        background: #09;
+        width: 8px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: #999;
+        border-radius: 4px;
+    }
+}
+
+/* ==========================
+   Video Player Button Styling
+   ========================== */
+.plyr__control--overlaid {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    transition: none !important;
+}
+
+.plyr__control--overlaid:hover {
+    transform: translate(-50%, -50%) !important;
+}
+
+/* ==========================
+   Touch Device Spacing Adjustments (Mobile/Tablet)
+   ========================== */
+@media (max-width:1024px) and (pointer: coarse) {
+    #header nav a,
+    #header nav a[aria-current="page"],
+    .theme-btn--primary.btn.sqs-button-element--primary {
+        margin-left: 25px !important;
+    }
+}
+
+@media (max-width:1024px) and (pointer: coarse) {
+    .header-menu-cta {
+        margin-top: 0px; /* Keep same spacing as before */
+    }
+}
+
+/* ==========================
+   Viewport & Spacing Adjustments for Mobile Menu
+   ========================== */
+.header-menu-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distributes items evenly */
+    height: 100vh; /* Full viewport height */
+    padding-top: var(--your-header-height, 0px); /* Adjust if needed */
+    box-sizing: border-box;
+}
+
+.header-menu-nav > nav {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Pushes links up */
+    gap: 0px; /* Maintain consistent spacing */
+}
+
+@media (max-width:1024px) and (pointer: coarse) {
+    .header-menu-cta {
+        margin-top: 0px; /* Keep same spacing as before */
+    }
+}
+
+/* ==========================
+   Desktop/Orientation Adjustments
+   ========================== */
+@media screen and (min-width:1025px), (orientation: landscape) {
+    .header-menu-nav-item-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
